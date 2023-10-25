@@ -1,0 +1,8 @@
+{
+  "java.debug.settings.onBuildFailureProceed": true,
+  "java.project.sourcePaths": [
+    "02_variables/Practicas",
+    "02_variables/Ejemplos",
+    "01_salida_por_pantalla/Practicas"
+  ]
+}
