@@ -3,6 +3,9 @@
   "java.project.sourcePaths": [
     "02_variables/Practicas",
     "02_variables/Ejemplos",
-    "01_salida_por_pantalla/Practicas"
+    "01_salida_por_pantalla/Practicas",
+    ".",
+    "03_pedir_por_pantalla\\Practicas",
+    "03_pedir_por_pantalla\\ejemplos"
   ]
 }
