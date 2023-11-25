@@ -1,0 +1,54 @@
+/**
+* como el ejercicio anterior pero la piramide es gueca
+*
+*@author Fernando Sanchez
+*/
+import java.util.Scanner;
+public class T05Ejercicio20 {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int altura;
+    String caracter;
+
+    System.out.print("Escriba la altura de la piramide: ");
+    altura = sc.nextInt();
+    System.out.print("Escriba el caracter con el  que se hace la piramide: ");
+    caracter = sc.next();
+
+    for (int i = 0; i < altura; i++) {
+
+      if (i==0) {
+        for (int j = 1; j < altura-i; j++) {
+          System.out.print(" ");
+        }
+  
+        for (int j = 0; j < i*2+1; j++) {
+          System.out.print(caracter);
+        }
+        System.out.println("");
+
+      } else if (i<altura-1) {
+        for (int j = 1; j < altura-i; j++) {
+         System.out.print(" ");
+        }
+
+       System.out.print(caracter);
+
+       for (int j = 0; j < (i*2+1)-2; j++) {
+          System.out.print(" ");
+        }
+
+        System.out.print(caracter);
+
+        System.out.println("");
+
+      } else if (i==altura-1) {
+
+        for (int j = 0; j < i*2+1; j++) {
+          System.out.print(caracter);
+        }
+      }
+    }
+    sc.close();
+  }
+}
