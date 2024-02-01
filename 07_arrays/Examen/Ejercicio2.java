@@ -45,16 +45,16 @@ public class Ejercicio2 {
 
     if (tabla == null) {
       System.out.println("La tabla no puede estar vacia");
+    }else {
+      for (int i = 0; i < tabla[fila1].length; i++) {
+        tablaAux[i] = tabla[fila2][i];
+        tabla[fila2][i] = tabla[fila1][i];
+        
+        tabla[fila1][i] = tablaAux[i];
+  
+      }
+      System.out.println("Las filas fueron intercambiadas use la opcion 3 para verlo");
     }
-
-    for (int i = 0; i < tabla[fila1].length; i++) {
-      tablaAux[i] = tabla[fila2][i];
-      tabla[fila2][i] = tabla[fila1][i];
-      
-      tabla[fila1][i] = tablaAux[i];
-
-    }
-    System.out.println("Las filas fueron intercambiadas use la opcion 3 para verlo");
 
   }
 

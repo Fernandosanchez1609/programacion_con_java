@@ -1,5 +1,3 @@
-import javax.sound.sampled.*;
-import java.io.File;
 
 public class Interfaz {
   private boolean mostrarPuntuacion = true;
@@ -79,35 +77,6 @@ public class Interfaz {
 
   }
 
-  public void reproducirSonido(String filePath) {
-
-    try {
-      // Obtener el archivo de sonido
-      AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(filePath));
-
-      // Obtener el formato de audio
-      AudioFormat format = audioInputStream.getFormat();
-
-      // Configurar la línea de datos
-      DataLine.Info info = new DataLine.Info(Clip.class, format);
-      Clip clip = (Clip) AudioSystem.getLine(info);
-
-      // Abrir el flujo de audio y cargar los datos del archivo
-      clip.open(audioInputStream);
-
-      // Reproducir el sonido
-      clip.start();
-
-      // Esperar hasta que el sonido termine de reproducirse
-      Thread.sleep(clip.getMicrosecondLength() / 1000);
-
-      // Cerrar el flujo de audio
-      clip.close();
-
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-  }
 
   public void escribirDeFormaLenta(String mensaje) {
     try {

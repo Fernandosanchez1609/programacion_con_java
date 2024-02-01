@@ -117,7 +117,6 @@ public class SieteyMedia {
 
               interfaz.escribirDeFormaLenta("Turno de: " + nombre);
               System.out.println("----------------------");
-              interfaz.reproducirSonido("carta.wav");
               manoJugador.mostrarMano();
               manoJugador.puntuacion(baraja.sacarCarta(indiceBarajada));
               if (interfaz.isMostrarPuntuacion()) {
