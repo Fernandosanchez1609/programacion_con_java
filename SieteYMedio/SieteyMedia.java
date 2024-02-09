@@ -37,12 +37,12 @@ public class SieteyMedia {
       // tipo de dato erróneo
       do {
         try {
-          interfaz.clearScreen();
-          interfaz.menuInicio();
+          Interfaz.clearScreen();
+          Interfaz.menuInicio();
           inicio = Integer.parseInt(System.console().readLine());
           error = false;
         } catch (Exception e) {
-          interfaz.clearScreen();
+          Interfaz.clearScreen();
           error = true;
         }
       } while (error == true);
@@ -51,18 +51,18 @@ public class SieteyMedia {
       switch (inicio) {
         case 1: // Iniciar juego
           salir = false;
-          interfaz.clearScreen();
+          Interfaz.clearScreen();
           interfaz.escribirDeFormaLenta("Escriba su nombre: ");
           nombre = System.console().readLine();
           if (nombre.equalsIgnoreCase("sergio")) {
-            interfaz.clearScreen();
+            Interfaz.clearScreen();
             interfaz.escribirDeFormaLenta("¡Hola profe!");
             try {
               Thread.sleep(1500);
             } catch (InterruptedException e) {
               Thread.currentThread().interrupt();
             }
-            interfaz.clearScreen();
+            Interfaz.clearScreen();
           }
 
           do {
@@ -79,7 +79,7 @@ public class SieteyMedia {
               } while (monedero < 1);
               error = false;
             } catch (Exception e) {
-              interfaz.clearScreen();
+              Interfaz.clearScreen();
               interfaz.escribirDeFormaLenta("Solo numeros enteros");
               error = true;
             }
@@ -109,7 +109,7 @@ public class SieteyMedia {
             manoJugador.vaciarMano();
             manoBanca.vaciarMano();
 
-            interfaz.clearScreen();
+            Interfaz.clearScreen();
             // Aqui empieza el turno del jugador
             while (manoJugador.getPuntuacion() < 7.5 && !finRonda) {
 
@@ -146,7 +146,7 @@ public class SieteyMedia {
 
                 } while (!plantarse.equalsIgnoreCase("s") && !plantarse.equalsIgnoreCase("n"));
 
-                interfaz.clearScreen();
+                Interfaz.clearScreen();
 
                 // Aqui empieza el turno de la banca
                 if (plantarse.equalsIgnoreCase("s")) {
@@ -169,7 +169,7 @@ public class SieteyMedia {
                     }
                     indiceBarajada++; // El indice baraja sirve para saber cual es la siguiente carta a elegir
                     if (manoBanca.getPuntuacion() <= manoJugador.getPuntuacion()) {
-                      interfaz.clearScreen();
+                      Interfaz.clearScreen();
                     }
                   }
 
@@ -211,48 +211,48 @@ public class SieteyMedia {
               // control para que solo se pueda introducir "s" o "n"
 
             }
-            interfaz.clearScreen();
+            Interfaz.clearScreen();
           }
           break;
 
         case 2: // Segunda opción del menú principal. Muestra las instrucciones del juego
-          interfaz.clearScreen();
-          interfaz.instrucciones();
+          Interfaz.clearScreen();
+          Interfaz.instrucciones();
           System.out.print("Precione intro para volver al menu principal");
           System.console().readLine();
-          interfaz.clearScreen();
+          Interfaz.clearScreen();
 
           break;
 
         case 3:
-          interfaz.clearScreen();
+          Interfaz.clearScreen();
           interfaz.opciones();
           break;
 
         case 4: // Tercera opción. Muestra los créditos del juego
-          interfaz.clearScreen();
-          interfaz.creditos();
+          Interfaz.clearScreen();
+          Interfaz.creditos();
           System.out.print("Precione intro para volver al menu principal");
           System.console().readLine();
-          interfaz.clearScreen();
+          Interfaz.clearScreen();
 
           break;
 
         case 5: // Cuarta opción. Salir del juego
           repetir = false;
-          interfaz.clearScreen();
+          Interfaz.clearScreen();
           System.out.println("¡Nos vemos!");
           try {
             Thread.sleep(1500);
           } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
           }
-          interfaz.clearScreen();
+          Interfaz.clearScreen();
           break;
 
         default: // Si se introduce cualquier otra cosa se repite el menú principal
           repetir = true;
-          interfaz.clearScreen();
+          Interfaz.clearScreen();
 
           break;
       }
