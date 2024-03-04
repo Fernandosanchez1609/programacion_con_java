@@ -27,19 +27,19 @@ public class Mano {
 
         switch (carta.getNumero()) {
           case 8:
-            System.out.print("sota");
+            Interfaz.escribirDeFormaLenta("sota");
             break;
           case 9:
-            System.out.print("caballo");
+            Interfaz.escribirDeFormaLenta("caballo");
             break;
           case 10:
-            System.out.print("rey");
+            Interfaz.escribirDeFormaLenta("rey");
             break;
           default:
             System.out.print(carta.getNumero());
             break;
         }
-        System.out.println(" de " + carta.getPalo());
+        Interfaz.escribirDeFormaLenta(" de " + carta.getPalo()+"\n");
       }
     }
   }

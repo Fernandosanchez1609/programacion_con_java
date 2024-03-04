@@ -12,7 +12,7 @@ public class Jugador {
   // Metodo realizar apuesta
   public int apuesta() {
     do { // Bucle para asegurar que la cantidad es correcta
-      System.out.println("¿Cuánto dinero quiere apostar? ");
+      Interfaz.escribirDeFormaLenta("¿Cuánto dinero quiere apostar? ");
       System.out.print(" $");
       apuesta = Integer.parseInt(System.console().readLine());
       if (apuesta > monedero) {

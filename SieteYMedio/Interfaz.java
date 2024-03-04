@@ -1,8 +1,8 @@
 
 public class Interfaz {
-  private boolean mostrarPuntuacion = true;
-  private String respuesta;
-  private int velocidad = 40;
+  private static boolean mostrarPuntuacion = true;
+  private static String respuesta;
+  private static int velocidad = 40;
   //////////////// Metodos
 
   public static void menuInicio() {
@@ -17,7 +17,7 @@ public class Interfaz {
     System.out.println("***********************************");
   }
 
-  public boolean isMostrarPuntuacion() {
+  public static boolean isMostrarPuntuacion() {
     return mostrarPuntuacion;
   }
 
@@ -50,7 +50,7 @@ public class Interfaz {
     System.out.println("*************************************************");
   }
 
-  public void opciones() {
+  public static void opciones() {
     System.out.println("*************************");
     System.out.println("* 1. mostrar puntuacion *");
     System.out.println("* 2. velocidad de texto *");
@@ -64,7 +64,7 @@ public class Interfaz {
     }
   }
 
-  public void mostrarPuntuacion() {
+  public static void mostrarPuntuacion() {
     do {
       System.out.println(" ¿Mostrar puntuacion de las manos? (s/n)");
       respuesta = System.console().readLine();
@@ -78,19 +78,19 @@ public class Interfaz {
   }
 
 
-  public void escribirDeFormaLenta(String mensaje) {
+  public static void escribirDeFormaLenta(String mensaje) {
     try {
       for (char c : mensaje.toCharArray()) {
         System.out.print(c);
-        Thread.sleep(this.velocidad);
+        Thread.sleep(velocidad);
       }
-      System.out.println(); // Salto de línea al final
+
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
   }
 
-  public void velocidad() {
+  public static void velocidad() {
     boolean salir = true;
     do {
       
@@ -106,16 +106,16 @@ public class Interfaz {
 
       switch (respuesta) {
         case 1:
-          this.velocidad = 100;
+          velocidad = 100;
           break;
         case 2:
-          this.velocidad = 70;
+          velocidad = 70;
           break;
         case 3:
-          this.velocidad = 40;
+          velocidad = 40;
           break;
         case 4:
-          this.velocidad = 0;
+          velocidad = 0;
           break;
         default:
           salir = false;
