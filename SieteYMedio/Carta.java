@@ -10,7 +10,7 @@ public class Carta {
   private double valor;
   private String palo;
 
-  // Constructores
+  // Constructor
   Carta(int numero, int palo) {
     this.numero = numero;
     if (numero <= 7) {

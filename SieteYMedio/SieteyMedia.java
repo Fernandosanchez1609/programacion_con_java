@@ -1,5 +1,5 @@
 /**
- * Explica tu código aquí
+ * Main
  * 
  * @author Pablo Ruiz
  * @author Fernando Sánchez
@@ -10,11 +10,10 @@ public class SieteyMedia {
   public static void main(String[] args) {
 
     // Creación de objetos
-    Baraja baraja = new Baraja();
+    // Baraja baraja = new Baraja();
     Jugador jugador = new Jugador();
     Mano manoJugador = new Mano();
     Mano manoBanca = new Mano();
-    
 
     // Declaración de variables
     int indiceBarajada;
@@ -29,7 +28,7 @@ public class SieteyMedia {
     String plantarse;
 
     // Inicializamos la baraja
-    baraja.iniciarBaraja();
+    Baraja.iniciarBaraja();
 
     // Menú principal
     do {
@@ -52,7 +51,7 @@ public class SieteyMedia {
         case 1: // Iniciar juego
           salir = false;
           Interfaz.clearScreen();
-          Interfaz.escribirDeFormaLenta("Escriba su nombre: ");
+          Interfaz.escribirDeFormaLenta("Escribe tu nombre: ");
           nombre = System.console().readLine();
           if (nombre.equalsIgnoreCase("sergio")) {
             Interfaz.clearScreen();
@@ -68,7 +67,7 @@ public class SieteyMedia {
           do {
             try { // Previene problemas si el usuario introduce un tipo de dato erróneo
               do { // Bucle do while para elegir monedero inicial
-                Interfaz.escribirDeFormaLenta("¿Con cuanto dinero va a jugar? ");
+                Interfaz.escribirDeFormaLenta("¿Con cuánto dinero vas a jugar? ");
                 System.out.print(" $");
                 monedero = Integer.parseInt(System.console().readLine());
                 if (monedero < 1) {
@@ -80,23 +79,23 @@ public class SieteyMedia {
               error = false;
             } catch (Exception e) {
               Interfaz.clearScreen();
-              Interfaz.escribirDeFormaLenta("Solo numeros enteros");
+              Interfaz.escribirDeFormaLenta("Sólo numeros enteros");
               error = true;
             }
-          } while (error == true); // verificar errores
+          } while (error == true);
 
-          // aqui empieza el juego
+          // Aquí empieza el juego
           while (jugador.getMonedero() > 0 && !salir) {
 
-            baraja.vaciarBaraja();
-            baraja.barajarBaraja();
+            Baraja.vaciarBaraja();
+            Baraja.barajarBaraja();
             indiceBarajada = 0;
             do {
               try {
                 jugador.setApuesta(jugador.apuesta()); // jugador.apuesta decide cuanto dinero apuesta el jugador
                 error = false;
               } catch (Exception e) {
-                Interfaz.escribirDeFormaLenta("solo numeros enteros");
+                Interfaz.escribirDeFormaLenta("Sólo numeros enteros");
                 System.out.println();
                 error = true;
               }
@@ -113,26 +112,27 @@ public class SieteyMedia {
             // Aqui empieza el turno del jugador
             while (manoJugador.getPuntuacion() < 7.5 && !finRonda) {
 
-              manoJugador.meterCarta(indiceBarajada, baraja.sacarCarta(indiceBarajada)); // se le da una carta al jugador
+              manoJugador.meterCarta(indiceBarajada, Baraja.sacarCarta(indiceBarajada)); // se le da una carta al
+                                                                                         // jugador
 
               System.out.println("Turno de: " + nombre);
               System.out.println("----------------------");
               manoJugador.mostrarMano();
-              manoJugador.puntuacion(baraja.sacarCarta(indiceBarajada));
+              manoJugador.puntuacion(Baraja.sacarCarta(indiceBarajada));
               if (Interfaz.isMostrarPuntuacion()) {
-                Interfaz.escribirDeFormaLenta("Puntuación: " + manoJugador.getPuntuacion()+"\n");
+                Interfaz.escribirDeFormaLenta("Puntuación: " + manoJugador.getPuntuacion() + "\n");
               }
 
               System.out.println("----------------------");
-              indiceBarajada++; // el indice baraja sirve para saber cual es la siguiente carta a elegir
+              indiceBarajada++; // el indice baraja sirve para saber cuál es la siguiente carta a elegir
 
-              if (manoJugador.getPuntuacion() > 7.5) { // si la puntuacion es mayor de 7.5 pierde el jugador
+              if (manoJugador.getPuntuacion() > 7.5) { // si la puntuación es mayor de 7.5 pierde el jugador
                 System.out.printf("\n \u001B[31m");
                 Interfaz.escribirDeFormaLenta("¡Has perdido!");
                 System.out.printf("\u001B[0m \n\n");
                 jugador.setMonedero(jugador.getMonedero() - jugador.getApuesta());
                 finRonda = true;
-              } else if (manoJugador.getPuntuacion() == 7.5) { // si la puntuacion es exactamente 7.5 el jugador pierde
+              } else if (manoJugador.getPuntuacion() == 7.5) { // si la puntuación es exactamente 7.5 el jugador pierde
                 System.out.printf("\n \u001B[32m");
                 Interfaz.escribirDeFormaLenta("¡Has Ganado!");
                 System.out.printf("\u001B[0m \n\n");
@@ -150,14 +150,15 @@ public class SieteyMedia {
 
                 // Aqui empieza el turno de la banca
                 if (plantarse.equalsIgnoreCase("s")) {
-                  while (manoBanca.getPuntuacion() <= manoJugador.getPuntuacion()) { // bucle para que la banca siga jugando
+                  while (manoBanca.getPuntuacion() <= manoJugador.getPuntuacion()) { // bucle para que la banca siga//
+                                                                                     // jugando
                     System.out.println("turno de: La banca");
                     System.out.println("----------------------");
-                    manoBanca.meterCarta(indiceBarajada, baraja.sacarCarta(indiceBarajada));
+                    manoBanca.meterCarta(indiceBarajada, Baraja.sacarCarta(indiceBarajada));
                     manoBanca.mostrarMano();
-                    manoBanca.puntuacion(baraja.sacarCarta(indiceBarajada));
+                    manoBanca.puntuacion(Baraja.sacarCarta(indiceBarajada));
                     if (Interfaz.isMostrarPuntuacion()) {
-                      Interfaz.escribirDeFormaLenta("Puntuación: " + manoBanca.getPuntuacion()+"\n");
+                      Interfaz.escribirDeFormaLenta("Puntuación: " + manoBanca.getPuntuacion() + "\n");
                     }
 
                     System.out.println("----------------------");
@@ -194,7 +195,8 @@ public class SieteyMedia {
             // luego de los dos turnos termina la ronda
             Interfaz.escribirDeFormaLenta("FIN DE LA RONDA");
             System.out.println();
-            Interfaz.escribirDeFormaLenta("Te quedan $" + jugador.getMonedero()+"\n"); // muestra cuanto dinero le queda en el monedero
+            Interfaz.escribirDeFormaLenta("Te quedan $" + jugador.getMonedero() + "\n"); // muestra cuanto dinero le
+                                                                                         // queda en el monedero
             if (jugador.getMonedero() < 1) {
               Interfaz.escribirDeFormaLenta("Te has quedado sin dinero\n");
               Interfaz.escribirDeFormaLenta("Presione intro para volver al menu principal \n");
@@ -202,7 +204,8 @@ public class SieteyMedia {
               finRonda = true;
             } else {
               do {
-                Interfaz.escribirDeFormaLenta("¿Quiere continuar jugando? (s/n)\n"); // Preguntar al jugador si quiere seguir jugando
+                Interfaz.escribirDeFormaLenta("¿Quiere continuar jugando? (s/n)\n"); // Preguntar al jugador si quiere
+                                                                                     // seguir jugando
                 string = (System.console().readLine());
                 if (string.equalsIgnoreCase("n")) {
                   salir = true;
@@ -218,7 +221,7 @@ public class SieteyMedia {
         case 2: // Segunda opción del menú principal. Muestra las instrucciones del juego
           Interfaz.clearScreen();
           Interfaz.instrucciones();
-          System.out.print("Precione intro para volver al menu principal");
+          System.out.print("Presiona intro para volver al menú principal");
           System.console().readLine();
           Interfaz.clearScreen();
 
@@ -232,7 +235,7 @@ public class SieteyMedia {
         case 4: // Tercera opción. Muestra los créditos del juego
           Interfaz.clearScreen();
           Interfaz.creditos();
-          System.out.print("Precione intro para volver al menu principal");
+          System.out.print("Presiona intro para volver al menú principal");
           System.console().readLine();
           Interfaz.clearScreen();
 

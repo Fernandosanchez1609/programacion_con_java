@@ -10,17 +10,15 @@ public class Mano {
   private float puntuacion = 0;
   private Carta[] mano = new Carta[15];
 
-  // Metodo robar carta
+  // Métodos
   public void meterCarta(int ronda, Carta carta) {
     mano[ronda] = carta;
   }
 
-  // Metodo puntuacion
   public void puntuacion(Carta carta) {
     puntuacion += carta.getValor();
   }
 
-  // Metodo mostrar mano
   public void mostrarMano() {
     for (Carta carta : mano) {
       if (carta != null) {

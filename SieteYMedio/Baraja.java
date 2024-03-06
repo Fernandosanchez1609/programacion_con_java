@@ -1,17 +1,18 @@
 /**
- * Explica tu código aquí
+ * Clase baraja
  * 
  * @author Pablo Ruiz Fernando Sanchez
  */
 
-public class Baraja {
-  
-  private Carta[][] baraja = new Carta[4][10];
-  private Carta[] barajada = new Carta[40];
+public abstract class Baraja {
 
-  ///// Metodos
+  private static Carta[][] baraja = new Carta[4][10];
+  private static Carta[] barajada = new Carta[40];
 
-  public void iniciarBaraja() {
+  // Métodos
+  // Creamos 40 cartas en un array bidimensional
+  // 4 filas para los palos y 10 columnas para las cartas de cada palo
+  public static void iniciarBaraja() {
     for (int i = 0; i < 4; i++) {
       for (int j = 0; j < 10; j++) {
         baraja[i][j] = new Carta(j + 1, i);
@@ -19,7 +20,8 @@ public class Baraja {
       }
     }
   }
-
+  // Este método lo utilizamos para comprobar que la baraja fuese correcta
+  // No tiene uso en el juego
   public void mostrarBaraja() {
     for (int i = 0; i < 4; i++) {
       for (int j = 0; j < 10; j++) {
@@ -44,7 +46,9 @@ public class Baraja {
     }
   }
 
-  public void barajarBaraja() {
+  // Recorre el array bidimensional y guarda la carta en una posición aleatoria de un
+  // array monodimensional, del cual se irán sacando cartas para jugar
+  public static  void barajarBaraja() {
     int num;
 
     for (int i = 0; i < 4; i++) {
@@ -63,6 +67,8 @@ public class Baraja {
     }
   }
 
+  // Este método lo utilizamos para comprobar que la baraja barajada fuese correcta
+  // No tiene uso en el juego
   public void mostrarBarajada() {
     for (int i = 0; i < barajada.length; i++) {
       if (barajada[i].getNumero() < 8) {
@@ -84,11 +90,11 @@ public class Baraja {
     }
   }
 
-  public Carta sacarCarta(int ronda){
+  public static Carta sacarCarta(int ronda) {
     return barajada[ronda];
   }
 
-  public void vaciarBaraja() {
+  public static void vaciarBaraja() {
     for (int i = 0; i < barajada.length; i++) {
       barajada[i] = null;
     }
